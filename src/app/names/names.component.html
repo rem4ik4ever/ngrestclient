@@ -1,0 +1,14 @@
+<h1>
+    {{title}}
+</h1>
+<div>
+    <button (click)="getNames()">Get the names</button>
+</div>
+<table border=1>
+    <tr *ngFor="let name of names">
+        <td><a style="cursor: pointer" (click)="getDetails(name)">{{name}}</a></td>
+    </tr>
+</table>
+<div>
+    <name-detail [nameDetail]="nameDetail" [show]="hideDetail"></name-detail>
+</div>
