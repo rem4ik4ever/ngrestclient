@@ -1,0 +1,28 @@
+<h3>Names Form</h3>
+<form #f="ngForm">
+
+    <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" [(ngModel)]="model.name" required minlength='5' name="name" #spy/>
+        <div *ngIf="f?.controls?.name?.hasError('minlength')">
+            Input is required, 5 char's min'
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>About</label>
+        <input class="form-control" [(ngModel)]="model.about" name="about" />
+    </div>
+
+    <div class="form-group">
+        <label>Image Url</label>
+        <input class="form-control" [(ngModel)]="model.imageUrl" required pattern="http.*\.(jpg|png)" name="imageUrl" />
+        <div *ngIf="f?.controls?.imageUrl?.hasError('pattern')">
+            Image link must be complete url and image type must be png or jpg
+        </div>
+    </div>
+    <div>
+        <input type="button" [disabled]="!f.valid" (click)="saveName()" class="btn" value="Enter" />
+    </div>
+
+</form>

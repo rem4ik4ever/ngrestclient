@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { NamesComponent } from './names/names.component';
 import { NameDetailComponent } from './details/name-detail.component';
+import { NamesFormComponent } from './forms/names-form.component';
 
 @NgModule({
   declarations: [
     NamesComponent,
-    NameDetailComponent
+    NameDetailComponent,
+    NamesFormComponent
   ],
   imports: [
     BrowserModule,
