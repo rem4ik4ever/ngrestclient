@@ -10,8 +10,18 @@
     </tr>
 </table>
 <div>
+    <!-- 
+        nameDetail is input to name-detail component
+        show is passing a boolean value into the component and
+        makes this component visible or hides it
+     -->
     <name-detail [nameDetail]="nameDetail" [show]="hideDetail"></name-detail>
 </div>
 <div>
-    <names-form></names-form>
+    <!-- 
+        nameDetail is an output event from names-form component
+        it triggers method getNames in component names.component
+        with the parameter nameDetail annotated as @Output in names-form
+     -->
+    <names-form (nameDetail)="getNames($event)"></names-form>
 </div>

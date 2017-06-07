@@ -1,9 +1,19 @@
 <h3>Names Form</h3>
+<!-- 
+    define a variable f that can be used in the html template 
+    and assign it as ngForm
+ -->
 <form #f="ngForm">
 
     <div class="form-group">
         <label>Name</label>
+        <!-- 
+            [(ngModel)] makes two-way binding between component variable model.name 
+            and this input field value
+            validation rules: required, minimum length 5 characters
+         -->
         <input class="form-control" [(ngModel)]="model.name" required minlength='5' name="name" #spy/>
+        <!-- Angular includes this div into the DOM model only if there are validation errors -->
         <div *ngIf="f?.controls?.name?.hasError('minlength')">
             Input is required, 5 char's min'
         </div>
@@ -21,6 +31,10 @@
             Image link must be complete url and image type must be png or jpg
         </div>
     </div>
+    <!-- 
+        button is only enabled when the input form f is valid. ngForm tracks if there are any errors
+        (click) bind the click event ot method saveName of the owning component
+     -->
     <div>
         <input type="button" [disabled]="!f.valid" (click)="saveName()" class="btn" value="Enter" />
     </div>
