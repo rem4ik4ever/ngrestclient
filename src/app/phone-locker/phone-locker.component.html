@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card pl-box flex-column">
+        <div class="card-content pl-box_content">
+          <span class="card-title">Phone Locker</span>
+          <div>
+            Status: 
+            <span class="green-text" *ngIf="locker.isOpen">{{locker.status}}</span>
+            <span class="red-text" *ngIf="!locker.isOpen">{{locker.status}}</span>
+          </div>
+          <div *ngIf="!locker.isOpen">
+            Time Elapsed: {{showElapsedTime(timeElapsed)}}
+          </div>
+          <div *ngIf="!locker.isOpen">
+            Used by: {{userName}}
+          </div>
+        </div>
+        <div *ngIf="locker.isOpen">
+          <div class="input-field col s12">
+            <input [(ngModel)]="userName" id="last_name" type="text" class="validate" required>
+            <label for="last_name">Enter name</label>
+          </div>
+        </div>
+        <div class="card-action pl-box_actions">
+          <a class="waves-effect waves-light blue btn" 
+            (click)="occupyLocker()" 
+            *ngIf="locker.isOpen"
+            materialize [materializeParams]="['Name is required',4000]" [materializeActions]="actions">
+            Occupy
+          </a>
+          <a class="waves-effect waves-light red btn" 
+            (click)="unlockLocker()" 
+            *ngIf="!locker.isOpen">
+            Unlock
+          </a>
+        </div>
+    </div>
+  </div>
+</div>
