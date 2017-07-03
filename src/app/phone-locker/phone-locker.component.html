@@ -25,15 +25,47 @@
           <a class="waves-effect waves-light blue btn" 
             (click)="occupyLocker()" 
             *ngIf="locker.isOpen"
-            materialize [materializeParams]="['Name is required',4000]" [materializeActions]="actions">
+            materialize="toast" [materializeActions]="toastActions">
             Occupy
           </a>
           <a class="waves-effect waves-light red btn" 
-            (click)="unlockLocker()" 
+            (click)="openModal1()" 
             *ngIf="!locker.isOpen">
             Unlock
           </a>
         </div>
     </div>
+  </div>
+</div>
+
+<!-- Modal dialog-->
+
+<div id="modal1" class="modal bottom-sheet" materialize="modal" [materializeParams]="model1Params" [materializeActions]="actions">
+  <div class="modal-content">
+    <h4>Finish charging session?</h4>
+    <div class="row valign-wrapper">
+      <div class="col s2">Cost: $ {{this.tmpCost}}</div>
+      <div class="input-field col s3">
+        <input [(ngModel)]="pinCode" id="pin_code" type="text" class="validate" required>
+        <label for="pin_code">Enter PIN code</label>
+      </div>
+      <div class="col s7"></div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="waves-effect waves-green btn-flat" (click)="closeModal1()">Close</a>
+    <a 
+      class="modal-action waves-effect waves-green btn-flat"
+      (click)="pay()"
+    >Pay</a>
+  </div>
+</div>
+
+<div id="modal2" class="modal bottom-sheet" materialize="modal" [materializeParams]="model1Params" [materializeActions]="occupyActions">
+  <div class="modal-content">
+    <h4>Remember your unlock PIN: {{lockerSession.pin}}</h4>
+  </div>
+  <div class="modal-footer">
+    <a class="waves-effect waves-green btn-flat" (click)="closeModal2()">Got It!</a>
   </div>
 </div>

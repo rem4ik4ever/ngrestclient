@@ -2,18 +2,15 @@
 import { LockerUser } from './locker-user';
 
 export class LockerSession {
-  id: Number;
-  timeStarted: Date;
-  timeEnded: Date;
+  id: number;
+  timeStarted: number;
+  timeEnded: number;
   userName: String;
-  cost: Number;
+  cost: String;
+  pin: String;
 
-  constructor(startDate: Date, userName: String){
+  constructor(startDate: number, userName: String){
     this.timeStarted = startDate;
     this.userName = userName;
-  }
-
-  finishSession() {
-    this.timeEnded = new Date();
   }
 }
