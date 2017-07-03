@@ -2,6 +2,11 @@
   margin-top: 12px;
 }
 
+.b-space{
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
 .flex{
   display: flex;
 }

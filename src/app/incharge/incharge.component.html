@@ -1,17 +1,24 @@
 <nav>
   <div class="nav-wrapper red">
-    <a href="#" class="brand-logo">Logo</a>
+    <a href="#" class="brand-logo b-space">inCharge</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li>
-          <a href="">Main</a>
-        </li>
-        <li>
-          <a href="">Account</a>
-        </li>
-        <li>
-          <a href="">Log Out</a>
+          <a (click)="showForgotPinModal()">Forgot PIN?</a>
         </li>
     </ul>
   </div>
 </nav>
 <router-outlet></router-outlet>
+
+
+<div id="modalPin" class="modal bottom-sheet" materialize="modal" [materializeParams]="model1Params" [materializeActions]="forgotPinModalActions">
+  <div class="modal-content">
+    <h4>Forgot PIN?</h4>
+    <p>
+      If you forgot yout PIN please contact support <b>(908)909808</b>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <a class="waves-effect waves-green btn-flat" (click)="closeModalPin()">Thanks!</a>
+  </div>
+</div>
